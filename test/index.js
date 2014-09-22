@@ -1,7 +1,7 @@
 // Load modules
 
 var Lab = require('lab');
-var Mime = require('..');
+var Mimos = require('..');
 
 
 // Declare internals
@@ -16,13 +16,13 @@ var describe = lab.describe;
 var it = lab.it;
 var expect = Lab.expect;
 
-describe('Mime', function () {
+describe('mimos', function () {
 
-    describe('#path', function () {
+    describe('path()', function () {
 
         it('returns the mime type from a file path', function (done) {
 
-            expect(Mime.path('/static/javascript/app.js')).deep.equal({
+            expect(Mimos.path('/static/javascript/app.js')).deep.equal({
                 source: 'iana',
                 charset: 'UTF-8',
                 compressible: true,
@@ -34,16 +34,16 @@ describe('Mime', function () {
 
         it('returns empty object if a match can not be found', function (done) {
 
-            expect(Mime.path('/static/javascript')).to.deep.equal({});
+            expect(Mimos.path('/static/javascript')).to.deep.equal({});
             done();
         });
     });
 
-    describe('#type', function () {
+    describe('type()', function () {
 
         it('returns a found type', function (done) {
 
-            expect(Mime.type('text/plain')).to.deep.equal({
+            expect(Mimos.type('text/plain')).to.deep.equal({
                 source: 'iana',
                 compressible: true,
                 extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
@@ -54,7 +54,7 @@ describe('Mime', function () {
 
         it('returns a missing type', function (done) {
 
-            expect(Mime.type('hapi/test')).to.deep.equal({
+            expect(Mimos.type('hapi/test')).to.deep.equal({
                 source: 'hapi',
                 compressible: false,
                 extensions: [],
