@@ -16,51 +16,49 @@ var describe = lab.describe;
 var it = lab.it;
 var expect = Lab.expect;
 
-describe('mimos', function () {
 
-    describe('path()', function () {
+describe('path()', function () {
 
-        it('returns the mime type from a file path', function (done) {
+    it('returns the mime type from a file path', function (done) {
 
-            expect(Mimos.path('/static/javascript/app.js')).deep.equal({
-                source: 'iana',
-                charset: 'UTF-8',
-                compressible: true,
-                extensions: ['js'],
-                type: 'application/javascript'
-            });
-            done();
+        expect(Mimos.path('/static/javascript/app.js')).deep.equal({
+            source: 'iana',
+            charset: 'UTF-8',
+            compressible: true,
+            extensions: ['js'],
+            type: 'application/javascript'
         });
-
-        it('returns empty object if a match can not be found', function (done) {
-
-            expect(Mimos.path('/static/javascript')).to.deep.equal({});
-            done();
-        });
+        done();
     });
 
-    describe('type()', function () {
+    it('returns empty object if a match can not be found', function (done) {
 
-        it('returns a found type', function (done) {
+        expect(Mimos.path('/static/javascript')).to.deep.equal({});
+        done();
+    });
+});
 
-            expect(Mimos.type('text/plain')).to.deep.equal({
-                source: 'iana',
-                compressible: true,
-                extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
-                type: 'text/plain'
-            });
-            done();
+describe('type()', function () {
+
+    it('returns a found type', function (done) {
+
+        expect(Mimos.type('text/plain')).to.deep.equal({
+            source: 'iana',
+            compressible: true,
+            extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
+            type: 'text/plain'
         });
+        done();
+    });
 
-        it('returns a missing type', function (done) {
+    it('returns a missing type', function (done) {
 
-            expect(Mimos.type('hapi/test')).to.deep.equal({
-                source: 'hapi',
-                compressible: false,
-                extensions: [],
-                type: 'hapi/test'
-            });
-            done();
+        expect(Mimos.type('hapi/test')).to.deep.equal({
+            source: 'hapi',
+            compressible: false,
+            extensions: [],
+            type: 'hapi/test'
         });
+        done();
     });
 });
