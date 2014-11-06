@@ -36,6 +36,15 @@ describe('path()', function () {
         expect(Mimos.path('/static/javascript')).to.deep.equal({});
         done();
     });
+
+    it('ignores extension upper case', function (done) {
+        var lower = '/static/image/image.jpg';
+        var upper = '/static/image/image.JPG';
+
+        expect(Mimos.path(lower).type === Mimos.path(upper).type).to.equal(true);
+
+        done();
+    });
 });
 
 describe('type()', function () {
