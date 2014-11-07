@@ -1,5 +1,6 @@
 // Load modules
 
+var Code = require('code');
 var Lab = require('lab');
 var Mimos = require('..');
 
@@ -14,7 +15,7 @@ var internals = {};
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
 var it = lab.it;
-var expect = Lab.expect;
+var expect = Code.expect;
 
 
 describe('path()', function () {
@@ -38,10 +39,11 @@ describe('path()', function () {
     });
 
     it('ignores extension upper case', function (done) {
+
         var lower = '/static/image/image.jpg';
         var upper = '/static/image/image.JPG';
 
-        expect(Mimos.path(lower).type === Mimos.path(upper).type).to.equal(true);
+        expect(Mimos.path(lower).type).to.equal(Mimos.path(upper).type);
 
         done();
     });
