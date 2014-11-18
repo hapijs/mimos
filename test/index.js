@@ -76,7 +76,7 @@ describe('Mimos', function() {
             var mimos = new Mimos();
 
             expect(mimos.type('hapi/test')).to.deep.equal({
-                source: 'hapi',
+                source: 'mimos',
                 compressible: false,
                 extensions: [],
                 type: 'hapi/test'
