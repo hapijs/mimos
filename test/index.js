@@ -24,9 +24,9 @@ describe('Mimos', function() {
 
         it('returns the mime type from a file path', function (done) {
 
-            var m = new Mimos();
+            var mimos = new Mimos();
 
-            expect(m.path('/static/javascript/app.js')).deep.equal({
+            expect(mimos.path('/static/javascript/app.js')).deep.equal({
                 source: 'iana',
                 charset: 'UTF-8',
                 compressible: true,
@@ -38,9 +38,9 @@ describe('Mimos', function() {
 
         it('returns empty object if a match can not be found', function (done) {
 
-            var m = new Mimos();
+            var mimos = new Mimos();
 
-            expect(m.path('/static/javascript')).to.deep.equal({});
+            expect(mimos.path('/static/javascript')).to.deep.equal({});
             done();
         });
 
@@ -48,9 +48,9 @@ describe('Mimos', function() {
 
             var lower = '/static/image/image.jpg';
             var upper = '/static/image/image.JPG';
-            var m = new Mimos();
+            var mimos = new Mimos();
 
-            expect(m.path(lower).type).to.equal(m.path(upper).type);
+            expect(mimos.path(lower).type).to.equal(mimos.path(upper).type);
 
             done();
         });
@@ -60,9 +60,9 @@ describe('Mimos', function() {
 
         it('returns a found type', function (done) {
 
-            var m = new Mimos();
+            var mimos = new Mimos();
 
-            expect(m.type('text/plain')).to.deep.equal({
+            expect(mimos.type('text/plain')).to.deep.equal({
                 source: 'iana',
                 compressible: true,
                 extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
@@ -73,9 +73,9 @@ describe('Mimos', function() {
 
         it('returns a missing type', function (done) {
 
-            var m = new Mimos();
+            var mimos = new Mimos();
 
-            expect(m.type('hapi/test')).to.deep.equal({
+            expect(mimos.type('hapi/test')).to.deep.equal({
                 source: 'hapi',
                 compressible: false,
                 extensions: [],
@@ -99,9 +99,9 @@ describe('Mimos', function() {
             }
         };
 
-        var m = new Mimos(dbOverwrite);
-        expect(m.type('node/module')).to.deep.equal(nodeModule);
-        expect(m.path('/node_modules/node/module.npm')).to.deep.equal(nodeModule);
+        var mimos = new Mimos(dbOverwrite);
+        expect(mimos.type('node/module')).to.deep.equal(nodeModule);
+        expect(mimos.path('/node_modules/node/module.npm')).to.deep.equal(nodeModule);
 
         done();
     });
@@ -121,10 +121,10 @@ describe('Mimos', function() {
             }
         };
 
-        var m = new Mimos(dbOverwrite);
+        var mimos = new Mimos(dbOverwrite);
 
-        expect(m.type('application/javascript')).to.deep.equal(jsModule);
-        expect(m.path('/static/js/app.js')).to.deep.equal(jsModule);
+        expect(mimos.type('application/javascript')).to.deep.equal(jsModule);
+        expect(mimos.path('/static/js/app.js')).to.deep.equal(jsModule);
 
         done();
     });
@@ -147,16 +147,16 @@ describe('Mimos', function() {
             }
         };
 
-        var m = new Mimos(dbOverwrite);
+        var mimos = new Mimos(dbOverwrite);
 
-        var typeResult = m.type('application/javascript');
+        var typeResult = mimos.type('application/javascript');
 
         expect(typeResult).to.deep.equal({
             foo: 'bar',
             type: 'text/javascript'
         });
 
-        var pathResult = m.path('/static/js/app.js');
+        var pathResult = mimos.path('/static/js/app.js');
 
         expect(pathResult).to.deep.equal({
             foo: 'bar',
@@ -170,7 +170,7 @@ describe('Mimos', function() {
 
         expect(function () {
 
-            var m = Mimos();
+            var mimos = Mimos();
         }).to.throw('Mimos must be created with new');
         done();
 
@@ -180,7 +180,7 @@ describe('Mimos', function() {
 
         expect(function () {
 
-            var m = new Mimos({
+            var mimos = new Mimos({
                 override: {
                     'application/javascript': {
                         predicate: 'foo'
