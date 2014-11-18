@@ -169,4 +169,17 @@ describe('Mimos', function() {
         done();
 
     });
+
+    it('throws an error if the predicate option is not a functino', function (done) {
+
+        expect(function () {
+
+            var m = new Mimos({
+                'application/javascript': {
+                    predicate: false
+                }
+            });
+        }).to.throw('predicate option must be a function');
+        done();
+    });
 });
