@@ -94,7 +94,9 @@ describe('Mimos', function() {
             type: 'node/module'
         };
         var dbOverwrite = {
-            'node/module': nodeModule
+            override: {
+                'node/module': nodeModule
+            }
         };
 
         var m = new Mimos(dbOverwrite);
@@ -114,7 +116,9 @@ describe('Mimos', function() {
             type: 'text/javascript'
         };
         var dbOverwrite = {
-            'application/javascript': jsModule
+            override: {
+                'application/javascript': jsModule
+            }
         };
 
         var m = new Mimos(dbOverwrite);
@@ -138,7 +142,9 @@ describe('Mimos', function() {
             type: 'text/javascript'
         };
         var dbOverwrite = {
-            'application/javascript': jsModule
+            override: {
+                'application/javascript': jsModule
+            }
         };
 
         var m = new Mimos(dbOverwrite);
@@ -175,8 +181,10 @@ describe('Mimos', function() {
         expect(function () {
 
             var m = new Mimos({
-                'application/javascript': {
-                    predicate: false
+                override: {
+                    'application/javascript': {
+                        predicate: 'foo'
+                    }
                 }
             });
         }).to.throw('predicate option must be a function');
