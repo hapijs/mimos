@@ -1,7 +1,7 @@
 {
   "name": "mimos",
   "description": "Mime database interface",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "repository": "git://github.com/hapijs/mimos",
   "main": "index",
   "keywords": [
