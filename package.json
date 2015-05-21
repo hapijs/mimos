@@ -21,12 +21,8 @@
     "lab": "5.x.x"
   },
   "scripts": {
-    "test": "make test-cov"
+    "test": "lab -m 5000 -t 100 -v -La code",
+    "test-cov-html": "lab -m 5000 -r html -o coverage.html -La code"
   },
-  "licenses": [
-    {
-      "type": "BSD",
-      "url": "http://github.com/hapijs/mimos/raw/master/LICENSE"
-    }
-  ]
+  "license": "BSD-3-Clause"
 }

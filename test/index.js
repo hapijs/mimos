@@ -18,7 +18,7 @@ var describe = lab.describe;
 var it = lab.it;
 var expect = Code.expect;
 
-describe('Mimos', function() {
+describe('Mimos', function () {
 
     describe('path()', function () {
 
@@ -137,7 +137,7 @@ describe('Mimos', function() {
                 return {
                     foo: 'bar',
                     type: mime.type
-                }
+                };
             },
             type: 'text/javascript'
         };

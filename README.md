@@ -3,6 +3,7 @@
 Mime database interface.
 
 [![Build Status](https://secure.travis-ci.org/hapijs/mimos.png)](http://travis-ci.org/hapijs/mimos)
+[![Current Version](https://img.shields.io/npm/v/mimos.svg)](https://www.npmjs.com/package/mimos)
 
 Lead Maintainer - [Eran Hammer](https://github.com/hueniverse)
 
@@ -19,7 +20,7 @@ Creates a new Mimos object where:
         - `key` - the key is the lower-cased correct mime-type. (Ex. "application/javascript").
         - `value` - the value should an object following the specifications outlined [here](https://github.com/jshttp/mime-db#data-structure). Additional values include:
           - `type` - specify the `type` value of result objects, defaults to `key`. See the example below for more clarification.
-          - `predicate` - method with signature `function(mime)` when this mime type is found in the database, this function will run. This allows you make customizations to `mime` based on developer criteria. 
+          - `predicate` - method with signature `function(mime)` when this mime type is found in the database, this function will run. This allows you make customizations to `mime` based on developer criteria.
 
 ### `mimos.path(path)`
 
