@@ -1,7 +1,14 @@
+sudo: false # Enables containerized CI
+
+# The following is all to deal with cache
+cache:
+  directories: # Which directories to keep between builds
+    - node_modules
+install: npm update # Since the modules are cached, we have to update on every build
+
 language: node_js
 
 node_js:
   - 0.10
   - 0.12
   - iojs
-
