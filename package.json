@@ -3,14 +3,14 @@
   "description": "Mime database interface",
   "version": "2.0.2",
   "repository": "git://github.com/hapijs/mimos",
-  "main": "index",
+  "main": "lib/index.js",
   "keywords": [
     "mime",
     "database",
     "content-type"
   ],
   "engines": {
-    "node": ">=0.10.32"
+    "node": ">=0.10.40"
   },
   "dependencies": {
     "hoek": "2.x.x",

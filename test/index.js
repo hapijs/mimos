@@ -112,7 +112,7 @@ describe('Mimos', function () {
             source: 'iana',
             charset: 'UTF-8',
             compressible: true,
-            extensions: [ 'js', 'javascript' ],
+            extensions: ['js', 'javascript'],
             type: 'text/javascript'
         };
         var dbOverwrite = {
