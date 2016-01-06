@@ -2,7 +2,7 @@
 
 Mime database interface.
 
-[![Build Status](https://secure.travis-ci.org/hapijs/mimos.png)](http://travis-ci.org/hapijs/mimos)
+[![Build Status](https://secure.travis-ci.org/hapijs/mimos.svg)](http://travis-ci.org/hapijs/mimos)
 [![Current Version](https://img.shields.io/npm/v/mimos.svg)](https://www.npmjs.com/package/mimos)
 
 Lead Maintainer - [Adam Bretz](https://github.com/arb)
