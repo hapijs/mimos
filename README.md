@@ -29,8 +29,8 @@ Returns mime object where:
 - `path` path to file including the file extension. Uses the `extension` values of the mime objects for lookup.
 
 ```js
-var mimos = new Mimos();
-var mime = mimos.path('/static/public/app.js');
+const mimos = new Mimos();
+const mime = mimos.path('/static/public/app.js');
 // mime
 /*
 {
@@ -50,8 +50,8 @@ Returns mime object where:
 - `type` the content-type to find mime information about. Uses the `type` values of the mime objects for lookup.
 
 ```js
-var mimos = new Mimos();
-var mime = mimos.type('text/plain');
+const mimos = new Mimos();
+const mime = mimos.type('text/plain');
 // mime
 /*
 {
@@ -69,7 +69,7 @@ In certain situations, it can be helpful to override the built in mime type info
 
 ```js
 
-var options = {
+const options = {
     override: {
         'node/module': {
             source: 'iana',
@@ -98,7 +98,7 @@ var options = {
     }
 }
 
-var mimos = new Mimos(options);
+const mimos = new Mimos(options);
 console.dir(mimos.path('./node_modules/mimos.module'));
 /*
 {
