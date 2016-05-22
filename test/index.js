@@ -27,7 +27,7 @@ describe('Mimos', () => {
 
             const mimos = new Mimos();
 
-            expect(mimos.path('/static/javascript/app.js')).deep.equal({
+            expect(mimos.path('/static/javascript/app.js')).equal({
                 source: 'iana',
                 charset: 'UTF-8',
                 compressible: true,
@@ -41,7 +41,7 @@ describe('Mimos', () => {
 
             const mimos = new Mimos();
 
-            expect(mimos.path('/static/javascript')).to.deep.equal({});
+            expect(mimos.path('/static/javascript')).to.equal({});
             done();
         });
 
@@ -63,7 +63,7 @@ describe('Mimos', () => {
 
             const mimos = new Mimos();
 
-            expect(mimos.type('text/plain')).to.deep.equal({
+            expect(mimos.type('text/plain')).to.equal({
                 source: 'iana',
                 compressible: true,
                 extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
@@ -76,7 +76,7 @@ describe('Mimos', () => {
 
             const mimos = new Mimos();
 
-            expect(mimos.type('hapi/test')).to.deep.equal({
+            expect(mimos.type('hapi/test')).to.equal({
                 source: 'mimos',
                 compressible: false,
                 extensions: [],
@@ -101,8 +101,8 @@ describe('Mimos', () => {
         };
 
         const mimos = new Mimos(dbOverwrite);
-        expect(mimos.type('node/module')).to.deep.equal(nodeModule);
-        expect(mimos.path('/node_modules/node/module.npm')).to.deep.equal(nodeModule);
+        expect(mimos.type('node/module')).to.equal(nodeModule);
+        expect(mimos.path('/node_modules/node/module.npm')).to.equal(nodeModule);
 
         done();
     });
@@ -124,8 +124,8 @@ describe('Mimos', () => {
 
         const mimos = new Mimos(dbOverwrite);
 
-        expect(mimos.type('application/javascript')).to.deep.equal(jsModule);
-        expect(mimos.path('/static/js/app.js')).to.deep.equal(jsModule);
+        expect(mimos.type('application/javascript')).to.equal(jsModule);
+        expect(mimos.path('/static/js/app.js')).to.equal(jsModule);
 
         done();
     });
@@ -152,14 +152,14 @@ describe('Mimos', () => {
 
         const typeResult = mimos.type('application/javascript');
 
-        expect(typeResult).to.deep.equal({
+        expect(typeResult).to.equal({
             foo: 'bar',
             type: 'text/javascript'
         });
 
         const pathResult = mimos.path('/static/js/app.js');
 
-        expect(pathResult).to.deep.equal({
+        expect(pathResult).to.equal({
             foo: 'bar',
             type: 'text/javascript'
         });
