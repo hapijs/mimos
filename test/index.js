@@ -172,7 +172,7 @@ describe('Mimos', () => {
         expect(() => {
 
             Mimos();
-        }).to.throw('Mimos must be created with new');
+        }).to.throw('Class constructors cannot be invoked without \'new\'');
         done();
 
     });
