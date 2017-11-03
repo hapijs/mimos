@@ -17,11 +17,12 @@ const internals = {};
 const { describe, it } = exports.lab = Lab.script();
 const expect = Code.expect;
 
+
 describe('Mimos', () => {
 
     describe('path()', () => {
 
-        it('returns the mime type from a file path', async () => {
+        it('returns the mime type from a file path', () => {
 
             const mimos = new Mimos();
 
@@ -34,14 +35,14 @@ describe('Mimos', () => {
             });
         });
 
-        it('returns empty object if a match can not be found', async () => {
+        it('returns empty object if a match can not be found', () => {
 
             const mimos = new Mimos();
 
             expect(mimos.path('/static/javascript')).to.equal({});
         });
 
-        it('ignores extension upper case', async () => {
+        it('ignores extension upper case', () => {
 
             const lower = '/static/image/image.jpg';
             const upper = '/static/image/image.JPG';
@@ -53,7 +54,7 @@ describe('Mimos', () => {
 
     describe('type()', () => {
 
-        it('returns a found type', async () => {
+        it('returns a found type', () => {
 
             const mimos = new Mimos();
 
@@ -65,7 +66,7 @@ describe('Mimos', () => {
             });
         });
 
-        it('returns a missing type', async () => {
+        it('returns a missing type', () => {
 
             const mimos = new Mimos();
 
@@ -78,7 +79,7 @@ describe('Mimos', () => {
         });
     });
 
-    it('accepts an override object to make adjustments to the internal mime database', async () => {
+    it('accepts an override object to make adjustments to the internal mime database', () => {
 
         const nodeModule = {
             source: 'iana',
@@ -97,7 +98,7 @@ describe('Mimos', () => {
         expect(mimos.path('/node_modules/node/module.npm')).to.equal(nodeModule);
     });
 
-    it('allows built-in types to be replaced with user mime data', async () => {
+    it('allows built-in types to be replaced with user mime data', () => {
 
         const jsModule = {
             source: 'iana',
@@ -118,7 +119,7 @@ describe('Mimos', () => {
         expect(mimos.path('/static/js/app.js')).to.equal(jsModule);
     });
 
-    it('executes a predicate function if it is provided', async () => {
+    it('executes a predicate function if it is provided', () => {
 
         const jsModule = {
             predicate: function (mime) {
@@ -153,7 +154,7 @@ describe('Mimos', () => {
         });
     });
 
-    it('throws an error if created without new', async () => {
+    it('throws an error if created without new', () => {
 
         expect(() => {
 
@@ -161,7 +162,7 @@ describe('Mimos', () => {
         }).to.throw(/cannot be invoked without 'new'/g);
     });
 
-    it('throws an error if the predicate option is not a functino', async () => {
+    it('throws an error if the predicate option is not a functino', () => {
 
         expect(() => {
 
