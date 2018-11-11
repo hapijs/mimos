@@ -1,4 +1,4 @@
-#mimos
+# mimos
 
 Mime database interface.
 
