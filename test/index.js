@@ -1,90 +1,20 @@
 'use strict';
 
-// Load modules
-
 const Code = require('code');
 const Lab = require('lab');
 const Mimos = require('..');
 
 
-// Declare internals
-
 const internals = {};
 
-
-// Test shortcuts
 
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;
 
+
 describe('Mimos', () => {
-
-    describe('path()', () => {
-
-        it('returns the mime type from a file path', (done) => {
-
-            const mimos = new Mimos();
-
-            expect(mimos.path('/static/javascript/app.js')).equal({
-                source: 'iana',
-                charset: 'UTF-8',
-                compressible: true,
-                extensions: ['js'],
-                type: 'application/javascript'
-            });
-            done();
-        });
-
-        it('returns empty object if a match can not be found', (done) => {
-
-            const mimos = new Mimos();
-
-            expect(mimos.path('/static/javascript')).to.equal({});
-            done();
-        });
-
-        it('ignores extension upper case', (done) => {
-
-            const lower = '/static/image/image.jpg';
-            const upper = '/static/image/image.JPG';
-            const mimos = new Mimos();
-
-            expect(mimos.path(lower).type).to.equal(mimos.path(upper).type);
-
-            done();
-        });
-    });
-
-    describe('type()', () => {
-
-        it('returns a found type', (done) => {
-
-            const mimos = new Mimos();
-
-            expect(mimos.type('text/plain')).to.equal({
-                source: 'iana',
-                compressible: true,
-                extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
-                type: 'text/plain'
-            });
-            done();
-        });
-
-        it('returns a missing type', (done) => {
-
-            const mimos = new Mimos();
-
-            expect(mimos.type('hapi/test')).to.equal({
-                source: 'mimos',
-                compressible: false,
-                extensions: [],
-                type: 'hapi/test'
-            });
-            done();
-        });
-    });
 
     it('accepts an override object to make adjustments to the internal mime database', (done) => {
 
@@ -190,5 +120,70 @@ describe('Mimos', () => {
             });
         }).to.throw('predicate option must be a function');
         done();
+    });
+
+    describe('path()', () => {
+
+        it('returns the mime type from a file path', (done) => {
+
+            const mimos = new Mimos();
+
+            expect(mimos.path('/static/javascript/app.js')).equal({
+                source: 'iana',
+                charset: 'UTF-8',
+                compressible: true,
+                extensions: ['js', 'mjs'],
+                type: 'application/javascript'
+            });
+            done();
+        });
+
+        it('returns empty object if a match can not be found', (done) => {
+
+            const mimos = new Mimos();
+
+            expect(mimos.path('/static/javascript')).to.equal({});
+            done();
+        });
+
+        it('ignores extension upper case', (done) => {
+
+            const lower = '/static/image/image.jpg';
+            const upper = '/static/image/image.JPG';
+            const mimos = new Mimos();
+
+            expect(mimos.path(lower).type).to.equal(mimos.path(upper).type);
+
+            done();
+        });
+    });
+
+    describe('type()', () => {
+
+        it('returns a found type', (done) => {
+
+            const mimos = new Mimos();
+
+            expect(mimos.type('text/plain')).to.equal({
+                source: 'iana',
+                compressible: true,
+                extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
+                type: 'text/plain'
+            });
+            done();
+        });
+
+        it('returns a missing type', (done) => {
+
+            const mimos = new Mimos();
+
+            expect(mimos.type('hapi/test')).to.equal({
+                source: 'mimos',
+                compressible: false,
+                extensions: [],
+                type: 'hapi/test'
+            });
+            done();
+        });
     });
 });
