@@ -1,10 +1,14 @@
 {
   "name": "@hapi/mimos",
   "description": "Mime database interface",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "repository": "git://github.com/hapijs/mimos",
   "main": "lib/index.js",
-  "keywords": ["mime", "database", "content-type"],
+  "keywords": [
+    "mime",
+    "database",
+    "content-type"
+  ],
   "dependencies": {
     "@hapi/hoek": "6.x.x",
     "mime-db": "1.x.x"
