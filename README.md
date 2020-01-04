@@ -12,5 +12,6 @@
 
 - [Documentation and API](https://hapi.dev/family/mimos/)
 - [Versions status](https://hapi.dev/resources/status/#mimos) (builds, dependencies, node versions, licenses, eol)
+- [Changelog](https://hapi.dev/family/mimos/changelog/)
 - [Project policies](https://hapi.dev/policies/)
 - [Free and commercial support options](https://hapi.dev/support/)
