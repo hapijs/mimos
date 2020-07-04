@@ -1,8 +1,11 @@
 {
-  "name": "@hapi/mimos",
+  "name": "@commercial/mimos",
   "description": "Mime database interface",
   "version": "4.1.1",
   "repository": "git://github.com/hapijs/mimos",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "main": "lib/index.js",
   "keywords": [
     "mime",
@@ -10,8 +13,8 @@
     "content-type"
   ],
   "dependencies": {
-    "@hapi/hoek": "8.x.x",
-    "mime-db": "1.x.x"
+    "@commercial/hoek": "^8.5.1",
+    "mime-db": "^1.44.0"
   },
   "devDependencies": {
     "@hapi/code": "6.x.x",
@@ -20,5 +23,5 @@
   "scripts": {
     "test": "lab -m 5000 -t 100 -L -a @hapi/code"
   },
-  "license": "BSD-3-Clause"
+  "license": "SEE LICENSE IN LICENSE.md"
 }
