@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@hapi/code": "8.x.x",
-    "@hapi/lab": "22.x.x"
+    "@hapi/lab": "24.x.x"
   },
   "scripts": {
     "test": "lab -m 5000 -t 100 -L -a @hapi/code"
