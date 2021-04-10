@@ -18,7 +18,7 @@ describe('Mimos', () => {
 
         it('returns the mime type from a file path', () => {
 
-            const mimos = new Mimos();
+            const mimos = new Mimos.Mimos();
 
             expect(mimos.path('/static/javascript/app.js')).equal({
                 source: 'iana',
@@ -29,18 +29,18 @@ describe('Mimos', () => {
             });
         });
 
-        it('returns empty object if a match can not be found', () => {
+        it('returns null if a match can not be found', () => {
 
-            const mimos = new Mimos();
+            const mimos = new Mimos.Mimos();
 
-            expect(mimos.path('/static/javascript')).to.equal({});
+            expect(mimos.path('/static/javascript')).to.be.null();
         });
 
         it('ignores extension upper case', () => {
 
             const lower = '/static/image/image.jpg';
             const upper = '/static/image/image.JPG';
-            const mimos = new Mimos();
+            const mimos = new Mimos.Mimos();
 
             expect(mimos.path(lower).type).to.equal(mimos.path(upper).type);
         });
@@ -50,7 +50,7 @@ describe('Mimos', () => {
 
         it('returns a found type', () => {
 
-            const mimos = new Mimos();
+            const mimos = new Mimos.Mimos();
 
             expect(mimos.type('text/plain')).to.equal({
                 source: 'iana',
@@ -60,9 +60,21 @@ describe('Mimos', () => {
             });
         });
 
+        it('returns a type when option is included', () => {
+
+            const mimos = new Mimos.Mimos();
+
+            expect(mimos.type('text/plain;charset=UTF-8')).to.equal({
+                source: 'iana',
+                compressible: true,
+                extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
+                type: 'text/plain'
+            });
+        });
+
         it('returns a missing type', () => {
 
-            const mimos = new Mimos();
+            const mimos = new Mimos.Mimos();
 
             expect(mimos.type('hapi/test')).to.equal({
                 source: 'mimos',
@@ -87,7 +99,7 @@ describe('Mimos', () => {
             }
         };
 
-        const mimos = new Mimos(dbOverwrite);
+        const mimos = new Mimos.Mimos(dbOverwrite);
         expect(mimos.type('node/module')).to.equal(nodeModule);
         expect(mimos.path('/node_modules/node/module.npm')).to.equal(nodeModule);
     });
@@ -107,7 +119,7 @@ describe('Mimos', () => {
             }
         };
 
-        const mimos = new Mimos(dbOverwrite);
+        const mimos = new Mimos.Mimos(dbOverwrite);
 
         expect(mimos.type('application/javascript')).to.equal(jsModule);
         expect(mimos.path('/static/js/app.js')).to.equal(jsModule);
@@ -131,7 +143,7 @@ describe('Mimos', () => {
             }
         };
 
-        const mimos = new Mimos(dbOverwrite);
+        const mimos = new Mimos.Mimos(dbOverwrite);
 
         const typeResult = mimos.type('application/javascript');
 
@@ -152,15 +164,23 @@ describe('Mimos', () => {
 
         expect(() => {
 
-            Mimos();
+            Mimos.Mimos();
         }).to.throw(/cannot be invoked without 'new'/g);
+    });
+
+    it('throws an error if override is not an object', () => {
+
+        expect(() => {
+
+            new Mimos.Mimos({ override: true });
+        }).to.throw('overrides option must be an object');
     });
 
     it('throws an error if the predicate option is not a functino', () => {
 
         expect(() => {
 
-            new Mimos({
+            new Mimos.Mimos({
                 override: {
                     'application/javascript': {
                         predicate: 'foo'

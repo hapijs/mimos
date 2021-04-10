@@ -3,25 +3,25 @@ Mimos is a convenience class for retrieving mime information objects.
 
 ## Usage
 
-### `new Mimos([options])`
+### `new Mimos.Mimos([options])`
 
 Creates a new Mimos object where:
 
 - `[options]` - an option object the following keys
     - `[override]` - an object hash that is merged into the built in mime information specified [here](https://github.com/jshttp/mime-db). Each key value pair represents a single mime object. Each override value should follow this schema:
         - `key` - the key is the lower-cased correct mime-type. (Ex. "application/javascript").
-        - `value` - the value should an object following the specifications outlined [here](https://github.com/jshttp/mime-db#data-structure). Additional values include:
+        - `value` - the value should be an object following the specifications outlined [here](https://github.com/jshttp/mime-db#data-structure). Additional values include:
           - `type` - specify the `type` value of result objects, defaults to `key`. See the example below for more clarification.
           - `predicate` - method with signature `function(mime)` when this mime type is found in the database, this function will run. This allows you make customizations to `mime` based on developer criteria.
 
 ### `mimos.path(path)`
 
-Returns mime object where:
+Lookup file extension from path and return mime object, or `null` if not found, where:
 
 - `path` path to file including the file extension. Uses the `extension` values of the mime objects for lookup.
 
 ```js
-const mimos = new Mimos();
+const mimos = new Mimos.Mimos();
 const mime = mimos.path('/static/public/app.js');
 // mime
 /*
@@ -42,7 +42,7 @@ Returns mime object where:
 - `type` the content-type to find mime information about. Uses the `type` values of the mime objects for lookup.
 
 ```js
-const mimos = new Mimos();
+const mimos = new Mimos.Mimos();
 const mime = mimos.type('text/plain');
 // mime
 /*
@@ -90,7 +90,7 @@ const options = {
     }
 }
 
-const mimos = new Mimos(options);
+const mimos = new Mimos.Mimos(options);
 console.dir(mimos.path('./node_modules/mimos.module'));
 /*
 {
