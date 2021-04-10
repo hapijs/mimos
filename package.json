@@ -4,6 +4,7 @@
   "version": "5.0.0",
   "repository": "git://github.com/hapijs/mimos",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -18,10 +19,12 @@
   },
   "devDependencies": {
     "@hapi/code": "8.x.x",
-    "@hapi/lab": "24.x.x"
+    "@hapi/lab": "24.x.x",
+    "typescript": "^4.0.7"
   },
   "scripts": {
-    "test": "lab -m 5000 -t 100 -L -a @hapi/code"
+    "test": "lab -m 5000 -t 100 -L -a @hapi/code -Y",
+    "test-cov-html": "lab -a @hapi/code -r html -o coverage.html -L"
   },
   "license": "BSD-3-Clause"
 }
