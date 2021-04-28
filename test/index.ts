@@ -31,8 +31,17 @@ expect.error(mimos.type(true));
 
 // Mimos.path()
 
-expect.type<MimosEntry | null>(mimos.path('/my/file.html'));
-expect.type<MimosEntry & { custom?: boolean } | null>(new Mimos<{ custom: boolean }>().path('/my/file.html'))
+expect.type<MimosEntry | {}>(mimos.path('/my/file.html'));
+expect.type<MimosEntry & { custom?: boolean } | {}>(new Mimos<{ custom: boolean }>().path('/my/file.html'))
 
 expect.error(mimos.path());
 expect.error(mimos.path(new URL('file:///my/file.html')));
+
+// MimosEntry
+
+const entry = mimos.path('/my/file.html');
+if (entry instanceof MimosEntry) {
+    expect.type<MimosEntry>(entry);
+}
+
+//expect.error(new MimosEntry());       // Test is disabled due to Lab issue

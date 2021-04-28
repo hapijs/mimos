@@ -29,11 +29,19 @@ describe('Mimos', () => {
             });
         });
 
-        it('returns null if a match can not be found', () => {
+        it('returns empty object if a match can not be found', () => {
 
             const mimos = new Mimos.Mimos();
 
-            expect(mimos.path('/static/javascript')).to.be.null();
+            expect(mimos.path('/static/javascript')).to.equal({});
+        });
+
+        it('can distinguish an empty return using instanceof', () => {
+
+            const mimos = new Mimos.Mimos();
+
+            expect(mimos.path('/static/javascript/app.js')).to.be.instanceof(Mimos.MimosEntry);
+            expect(mimos.path('/static/javascript')).to.not.be.instanceof(Mimos.MimosEntry);
         });
 
         it('ignores extension upper case', () => {

@@ -36,7 +36,7 @@ declare namespace MimeDb {
 type NoInfer<T> = [T][T extends any ? 0 : never];
 
 
-export interface MimosEntry {
+export class MimosEntry {
 
     /**
      * String with the content-type.
@@ -64,6 +64,8 @@ export interface MimosEntry {
      * Optional charset for type.
      */
     charset?: string;
+
+    private constructor();
 }
 
 export interface MimosDeclaration<P extends object = {}> extends MimeDb.MimeEntry {
@@ -117,9 +119,9 @@ export class Mimos<P extends object = {}> {
      *
      * @param path - Path to file
      *
-     * @return Found mime object, or null if no match.
+     * @return Found mime object, or {} if no match.
      */
-    path(path: string): (Readonly<MimosEntry & Partial<P>>) | null;
+    path(path: string): (Readonly<MimosEntry & Partial<P>>) | {};
 
     /**
      * Lookup mime information.
