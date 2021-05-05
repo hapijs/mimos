@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@hapi/code": "8.x.x",
-    "@hapi/lab": "24.x.x",
+    "@hapi/lab": "^24.2.1",
     "typescript": "~4.0.7"
   },
   "scripts": {

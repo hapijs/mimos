@@ -44,4 +44,4 @@ if (entry instanceof MimosEntry) {
     expect.type<MimosEntry>(entry);
 }
 
-//expect.error(new MimosEntry());       // Test is disabled due to Lab issue
+expect.error(new MimosEntry());
