@@ -16,7 +16,7 @@ Creates a new Mimos object where:
 
 ### `mimos.path(path)`
 
-Lookup file extension from path and return mime object, or `null` if not found, where:
+Lookup file extension from path and return mime object, or an empty object literal `{}` if not found, where:
 
 - `path` path to file including the file extension. Uses the `extension` values of the mime objects for lookup.
 
