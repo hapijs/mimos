@@ -1,7 +1,7 @@
 {
   "name": "@hapi/mimos",
   "description": "Mime database interface",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "repository": "git://github.com/hapijs/mimos",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
