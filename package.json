@@ -1,5 +1,5 @@
 {
-  "name": "@commercial/mimos",
+  "name": "mimos",
   "description": "Mime database interface",
   "version": "3.1.0",
   "repository": "git://github.com/hapijs/mimos",
@@ -13,7 +13,7 @@
     "content-type"
   ],
   "dependencies": {
-    "@commercial/hoek": "4.x.x",
+    "hoek": "4.x.x",
     "mime-db": "1.x.x"
   },
   "devDependencies": {
