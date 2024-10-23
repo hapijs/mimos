@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@hapi/hoek": "^11.0.2",
-    "mime-db": "^1.52.0"
+    "mime-db": "^1.53.0"
   },
   "devDependencies": {
     "@hapi/code": "^9.0.0",
