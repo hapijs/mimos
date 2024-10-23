@@ -19,7 +19,7 @@ describe('import()', () => {
 
     it('exposes all methods and classes as named imports', () => {
 
-        expect(Object.keys(Mimos)).to.equal([
+        expect(Object.keys(Mimos).filter((k) => k !== 'module.exports')).to.equal([
             'Mimos',
             'MimosEntry',
             'default'

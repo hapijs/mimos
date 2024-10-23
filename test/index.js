@@ -25,7 +25,7 @@ describe('Mimos', () => {
                 charset: 'UTF-8',
                 compressible: true,
                 extensions: ['js', 'mjs'],
-                type: 'application/javascript'
+                type: 'text/javascript'
             });
         });
 
